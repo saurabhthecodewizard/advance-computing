@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Demo Window</title>
+</head>
+
+<body onload="Color()">
+    <div style="height: 50px;width:500px;
+                background-color: black;position: absolute;top: 100px"></div>
+
+    <img id="car" style="height: 50px;width:100px;
+                position: absolute; top: 50px" src="images/car.png"></img>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <input type="button" value="Start" onclick="Move()">
+    <input type="button" value="Stop" onclick="Stop()">
+    <br />
+    <br />
+
+    <input id="cyan" type="radio" name="color" value="cyan" onclick="StopColor()">
+    <label for="cyan">Cyan</label><br>
+    <input id="yellow" type="radio" name="color" value="yellow" onclick="StopColor()">
+    <label for="yellow">Yellow</label><br>
+    <input id="orange" type="radio" name="color" value="orange" onclick="StopColor()">
+    <label for="orange">Orange</label><br>
+    <input id="red" type="radio" name="color" value="red" onclick="StopColor()">
+    <label for="red">Red</label><br>
+    <input id="green" type="radio" name="color" value="green" onclick="StopColor()">
+    <label for="green">Green</label><br>
+
+    <script>
+        var leftCounter=0;
+        var topCounter = 100;
+        var refToQueue = null;
+        var refToCar = document.getElementById("car");
+        var refToColor = document.getElementsByName("color");
+
+        function Move() {
+            refToQueue = window.setInterval(GoForward, 10);
+        }
+
+        function Stop() {
+            window.clearInterval(refToQueue);
+            window.location.href = "sessionExpired.html";
+        }
+
+        function GoForward() {
+            leftCounter = leftCounter + 1;
+            refToCar.style.left = leftCounter + "px";
+            if (leftCounter == 520) {
+                window.clearInterval(refToQueue);
+                refToQueue = window.setInterval(Fall, 10);
+            }
+        }
+
+        function Fall() {
+            topCounter = topCounter + 1;
+            refToCar.style.top = topCounter + "px";
+            if (topCounter == 500) {
+                Stop();
+            }
+        }
+
+        var refToColor = null;
+        var x = 0;
+        var colors = ["cyan", "yellow", "orange", "red", "green"];
+
+        function Color() {
+            refToColor = window.setInterval(ChangeColor, 200);
+        }
+
+        function ChangeColor() {
+
+            document.body.style.background = colors[x];
+            x = (x + 1) % colors.length;
+
+        }
+
+        function StopColor() {
+            window.clearInterval(refToColor);
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

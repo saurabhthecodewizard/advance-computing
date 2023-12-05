@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Calculator</title>
+
+
+</head>
+
+<body>
+
+    <table border="1">
+
+        <tr>
+            <td>Enter first number : </td>
+            <td><input type="number" id="num1"></td>
+        </tr>
+        <tr>
+            <td>Enter second number : </td>
+            <td><input type="number" id="num2"></td>
+        </tr>
+        <tr>
+            <td>Result : </td>
+            <td><input type="text" value="" id="result"></td>
+        </tr>
+
+    </table>
+
+    <br />
+
+    <input type="button" value="Addition" onclick="Add()">
+    <input type="button" value="Subtraction" onclick="Sub()">
+    <input type="button" value="Multiplication" onclick="Mul()">
+    <input type="button" value="Division" onclick="Div()">
+
+
+    <script>
+
+        function Add() {
+            document.getElementById("result").value = parseInt(document.getElementById("num1").value) + parseInt(document.getElementById("num2").value);
+        }
+        function Sub() {
+            document.getElementById("result").value = parseInt(document.getElementById("num1").value) - parseInt(document.getElementById("num2").value);
+        }
+        function Mul() {
+            document.getElementById("result").value = parseInt(document.getElementById("num1").value) * parseInt(document.getElementById("num2").value);
+        }
+        function Div() {
+            document.getElementById("result").value = parseInt(document.getElementById("num1").value) / parseInt(document.getElementById("num2").value);
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
